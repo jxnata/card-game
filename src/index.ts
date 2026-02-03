@@ -1,0 +1,5 @@
+export type { Card } from './models/Card'
+export { Player } from './models/Player'
+export { GAME_CONFIG } from './config/game.config'
+export { Utils } from './utils/Utils'
+export { Game } from './services/Game'

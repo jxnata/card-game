@@ -1,44 +1,7 @@
-export type Card = number // J = 0, A = 1, 2–10 = valor, Q = 11, K = 12
-
-export const GAME_CONFIG = {
-	TOTAL_CARDS: 52,
-	MAX_PLAYERS: 4,
-	MIN_PLAYERS: 2,
-	CARDS_PER_PLAYER: 3,
-	ELIMINATION_POINTS: 50,
-	LOW_CARD_THRESHOLD: 3,
-	STOP_SUM_LOW: 6,
-	STOP_SUM_MEDIUM: 10,
-} as const
-
-export class Player {
-	id: number
-	cards: Card[]
-	points: number
-	eliminated: boolean = false
-	knownCards: boolean[] = []
-
-	constructor(id: number) {
-		this.id = id
-		this.cards = []
-		this.points = 0
-		this.knownCards = [true, true, false] // conhece as 2 primeiras cartas
-	}
-
-	get sum(): number {
-		return this.cards.reduce((a, b) => a + (b || 0), 0)
-	}
-
-	get knownSum(): number {
-		return this.cards
-			.filter((_, index) => this.knownCards[index])
-			.reduce((a, b) => a + b, 0)
-	}
-
-	knownCardValues(): Card[] {
-		return this.cards.filter((_, index) => this.knownCards[index])
-	}
-}
+import { GAME_CONFIG } from '../config/game.config'
+import { Utils } from '../utils/Utils'
+import type { Card } from '../models/Card'
+import { Player } from '../models/Player'
 
 export class Game {
 	players: Player[]
@@ -306,12 +269,5 @@ export class Game {
 	getWinner(): Player | null {
 		if (!this.isGameOver()) return null
 		return this.players.find(p => !p.eliminated) || null
-	}
-}
-
-export class Utils {
-	static cardToSymbol(card: Card): string {
-		if (card === undefined) return '?'
-		return card === 0 ? 'J' : card === 1 ? 'A' : card === 11 ? 'Q' : card === 12 ? 'K' : card.toString()
 	}
 }

@@ -1,8 +1,8 @@
 // game.test.ts
 // Teste automatizado que simula um jogo completo com logs detalhados
 
-import { Game, GAME_CONFIG, Utils } from './game'
-import type { Player } from './game'
+import { Game, GAME_CONFIG, Utils } from './index'
+import type { Player } from './index'
 
 // Função auxiliar para verificar se deve parar após jogada
 function checkShouldStopAfterPlay(player: Player, game: Game): boolean {
