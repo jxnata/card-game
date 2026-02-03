@@ -15,9 +15,11 @@ O jogador que chegar a 100 pontos é eliminado do jogo.
 
 ## 3. Valores das cartas
 
--   Cartas numéricas valem seu valor normal.
+-   Cartas numéricas valem seu valor normal (2-10).
 -   J (Valete) vale 0.
--   Os demais valores seguem o número da carta.
+-   Q (Dama) vale 11.
+-   K (Rei) vale 12.
+-   A (Ás) vale 1.
 
 ## 4. Turno do jogador
 
@@ -68,7 +70,13 @@ Se o jogador pede para parar e _perde_:
 -   Ele soma todos os pontos de todas as cartas de todos os jogadores.
 -   Os outros jogadores não somam pontos.
 
-## 10. Eliminação
+## 10. Fim automático da rodada
+
+Se o monte de compras ficar vazio durante uma rodada, a rodada termina automaticamente.
+Neste caso, todos os jogadores revelam suas cartas e cada um soma os pontos das suas próprias cartas.
+Esta é uma condição de fim diferente do pedido de parada.
+
+## 11. Eliminação
 
 Jogadores acumulam pontos ao longo das rodadas.
 Ao atingir 100 pontos, o jogador é eliminado do jogo.
